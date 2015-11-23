@@ -24,8 +24,7 @@ for index, item in enumerate(itemArray):
 			clashAvoidedCount += 1
 			tempKeyDictionary[subK+str(clashAvoidedCount)] = k
 	keyDictionary.update(tempKeyDictionary)
-print(keyDictionary)
-
+print(json.dumps(keyDictionary))
 
 
 
