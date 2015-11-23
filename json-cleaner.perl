@@ -2,6 +2,7 @@
 use strict;
 use warnings;
 use JSON;
+use Data::Dumper;
 
 use Path::Class;
 use autodie; # die if problem reading or writing a file
@@ -25,6 +26,20 @@ my $content = $file->slurp();
 
 my $items_array = decode_json $content;
 
-#var_dump($items_array);
+#print Dumper($items_array[0]);
+
+#print Dumper($items_array->[0]);
 
 #print $content;
+
+foreach my $item ($items_array){
+	foreach my $elindex ($item){
+		print Dumper($elindex->['_id']);
+	}
+}
+
+
+
+
+
+
