@@ -43,9 +43,9 @@ for index, item in enumerate(itemArray):
 for c in range(start, start+size):
 	dataSet = deepcopy(defSet)
 	dataSet['_id'] = c
-	dataSet['_submission_time'] = d+datetime.timedelta(seconds=14.4*c)
+	dataSet['_submission_time'] = (startdate+datetime.timedelta(seconds=14.4*c)).strftime('%Y-%m-%dT%H:%M:%S')
 	dataSet['building_damage_assessment/hh_data/hh_address/hh_address_district/district'] = c%14
-	dateSet['_geolocation'] = [random.uniform(84.4929481, 86.9713082), random.uniform(27.5705217, 28.6946975)]
+	dataSet['_geolocation'] = [random.uniform(84.4929481, 86.9713082), random.uniform(27.5705217, 28.6946975)]
 	del dataSet['_uuid']
 	#dataSet['_uuid'] = os.popen("md5sum <<'"+str(c)+"'").read().replace('\n', '')
 	dataSet['_uuid'] = hashlib.md5(json.dumps(dataSet).encode('utf-8')).hexdigest()
