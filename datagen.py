@@ -5,6 +5,8 @@ import re
 from copy import deepcopy
 import hashlib
 import sys
+import datetime
+import random
 
 itemArray = open(sys.argv[1], 'r')
 
@@ -12,6 +14,8 @@ gendatafile = open('data.gen.'+sys.argv[1], 'w')
 
 start = 0
 size = 1000
+
+startdate = datetime.datetime.now()
 
 try:
 	start = int(sys.argv[2])
@@ -39,6 +43,9 @@ for index, item in enumerate(itemArray):
 for c in range(start, start+size):
 	dataSet = deepcopy(defSet)
 	dataSet['_id'] = c
+	dataSet['_submission_time'] = d+datetime.timedelta(seconds=14.4*c)
+	dataSet['building_damage_assessment/hh_data/hh_address/hh_address_district/district'] = c%14
+	dateSet['_geolocation'] = [random.uniform(84.4929481, 86.9713082), random.uniform(27.5705217, 28.6946975)]
 	del dataSet['_uuid']
 	#dataSet['_uuid'] = os.popen("md5sum <<'"+str(c)+"'").read().replace('\n', '')
 	dataSet['_uuid'] = hashlib.md5(json.dumps(dataSet).encode('utf-8')).hexdigest()
